@@ -16,9 +16,7 @@ class NewsFeedPresenter {
   }
   
   private func performArticleRequest() {
-    DispatchQueue.global(qos: .background).async {
       NetworkService.shared.performRequest(for: NetworkEndpoints.newsFeedUrl + NetworkEndpoints.apiKey)
-    }
   }
   
   func fetchArticlesFromDatabase() -> Results<ArticleObject> {
