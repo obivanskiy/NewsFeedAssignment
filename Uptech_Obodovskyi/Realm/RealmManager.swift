@@ -13,14 +13,20 @@ class RealmManager {
   public static let shared = RealmManager()
   
   private init() { }
-  
-  public func initializeRealm() {
+
+  public func saveArticleObjects(object: NewsFeed?) {
     let realm = try! Realm()
     
-    guard realm.isEmpty else { return }
+    guard let articles = object?.articles else { return }
     
-    try! realm.write {
-      realm.add(ArticleObject())
+    do {
+      try articles.forEach { article in
+        try realm.write {
+          realm.add(article, update: .modified)
+        }
+      }
+    } catch let error {
+      print(error.localizedDescription)
     }
   }
 }

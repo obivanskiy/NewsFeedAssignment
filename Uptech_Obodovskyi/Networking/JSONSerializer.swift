@@ -19,14 +19,7 @@ class JSONSerializer: RequestTypeSerializer {
     
     let decodedObject = decodedData(from: data, into: model)
     
-    let realm = try! Realm()
-    guard let articles = decodedObject?.articles else { return }
-    
-    try! articles.forEach { article in
-      try realm.write {
-        realm.add(article, update: .modified)
-      }
-    }
+    RealmManager.shared.saveArticleObjects(object: decodedObject)
     
     NotificationCenter.default.post(name: NotificationEndpoints.articleDataFetched, object: nil)
   }

@@ -10,5 +10,6 @@ import Foundation
 
 public struct NotificationEndpoints {
   static let articleDataFetched = NSNotification.Name("articleDataFetched")
+  static let requestError = NSNotification.Name("requestError")
 }
 

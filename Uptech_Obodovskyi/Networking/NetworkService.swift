@@ -21,14 +21,16 @@ class NetworkService {
     let session = URLSession.shared
     
     let task = session.dataTask(with: url) { (data, response, error) in
-      if let error = error {
-        print(error.localizedDescription)
-    }
       
       if let response = response {
         print(response)
       }
+
+      if let error = error {
+        NotificationCenter.default.post(name: NotificationEndpoints.requestError, object: nil)
+    }
       
+            
       if let data = data {
         JSONSerializer.init().saveDecodedDataToDatabase(from: data, into: NewsFeed.self)  
       }

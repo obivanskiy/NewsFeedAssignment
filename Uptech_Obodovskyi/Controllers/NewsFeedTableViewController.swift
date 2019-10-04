@@ -35,8 +35,8 @@ class NewsFeedTableViewController: UITableViewController {
   override func viewDidLoad() {
     setUpRefreshControl()
     viewModel = NewsFeedPresenter()
-
     
+    NotificationCenter.default.addObserver(self, selector: #selector(requestError), name: NotificationEndpoints.requestError, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(fetchArtciles), name: NotificationEndpoints.articleDataFetched, object: nil)
   }
   
@@ -58,6 +58,15 @@ class NewsFeedTableViewController: UITableViewController {
   @objc private func refreshTableData(_ sender: UIRefreshControl) {
     fetchArtciles()
     sender.endRefreshing()
+  }
+  
+  @objc private func requestError() {
+    let alert = UIAlertController(title: "Request Error", message: "Please, check your internet connection or try again later.", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    
+    alert.addAction(okAction)
+    
+    self.present(alert, animated: true, completion: nil)
   }
 }
 
