@@ -27,6 +27,7 @@ class JSONSerializer: RequestTypeSerializer {
         realm.add(article, update: .modified)
       }
     }
+    
     NotificationCenter.default.post(name: NotificationEndpoints.articleDataFetched, object: nil)
   }
   

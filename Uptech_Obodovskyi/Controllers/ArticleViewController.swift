@@ -32,9 +32,11 @@ class ArticleViewController: UIViewController {
     
     articleTitle.text = article.title
     
-    if let content = article.content {
+    if let content = article.content, !content.isEmpty {
       articleText.text = content.replaceSpaces()
       print(content)
+    } else {
+      articleText.text = article.articleDescription
     }
     
     articleSource.text = article.author
