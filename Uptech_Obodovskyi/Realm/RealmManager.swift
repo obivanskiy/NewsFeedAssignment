@@ -13,6 +13,10 @@ class RealmManager {
   public static let shared = RealmManager()
   
   private init() { }
+  
+  public func fetchArticleObjectsFromDB() -> Results<ArticleObject> {
+    return ArticleObject.all()
+  }
 
   public func saveArticleObjects(object: NewsFeed?) {
     let realm = try! Realm()

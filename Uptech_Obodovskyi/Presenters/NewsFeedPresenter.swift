@@ -22,6 +22,6 @@ class NewsFeedPresenter {
   }
   
   func fetchArticlesFromDatabase() -> Results<ArticleObject> {
-    return ArticleObject.all()
+    return RealmManager.shared.fetchArticleObjectsFromDB()
   }
 }
