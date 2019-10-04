@@ -12,8 +12,8 @@ import RealmSwift
 //"ArticleDetails"
 class NewsFeedTableViewController: UITableViewController {
   
-  
   private var viewModel: NewsFeedPresenter?
+  
   private var articles: Results<ArticleObject>? {
     didSet {
       DispatchQueue.main.async { [weak self] in
@@ -23,7 +23,7 @@ class NewsFeedTableViewController: UITableViewController {
     }
   }
   
-  internal lazy var tableRefreshControl: UIRefreshControl = {
+  lazy var tableRefreshControl: UIRefreshControl = {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
     
@@ -38,25 +38,6 @@ class NewsFeedTableViewController: UITableViewController {
 
     
     NotificationCenter.default.addObserver(self, selector: #selector(fetchArtciles), name: NotificationEndpoints.articleDataFetched, object: nil)
-  }
-  
-  
-  
-  override func viewWillAppear(_ animated: Bool) {
-    
-    notificationToken = articles?._observe({ [weak tableView] (change) in
-      
-      guard let tableView = tableView else { return }
-      
-      switch change {
-      case .initial:
-        tableView.reloadData()
-      case .update:
-        tableView.reloadData()
-      default:
-        break
-      }
-    })
   }
   
   override func viewWillDisappear(_ animated: Bool) {

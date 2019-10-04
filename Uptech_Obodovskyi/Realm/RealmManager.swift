@@ -23,5 +23,4 @@ class RealmManager {
       realm.add(ArticleObject())
     }
   }
-  
 }

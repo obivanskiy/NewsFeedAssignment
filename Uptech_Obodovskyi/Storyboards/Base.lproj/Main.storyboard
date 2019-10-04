@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AfI-bP-ohG">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController id="kdm-kd-2JO" customClass="NewsFeedTableViewController" customModule="Uptech_Obodovskyi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tjM-xf-r76">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -78,14 +78,14 @@
             <objects>
                 <viewController storyboardIdentifier="ArticleDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Gw-6v-BvG" customClass="ArticleViewController" customModule="Uptech_Obodovskyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s40-RM-mKD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="7J5-3Q-64v">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDv-wR-t1t">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbB-Q3-m3u">
                                                 <rect key="frame" x="8" y="235" width="398" height="20.333333333333343"/>
@@ -108,7 +108,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Click to read full article" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hlv-rt-DPt">
-                                                <rect key="frame" x="247" y="306" width="159" height="38"/>
+                                                <rect key="frame" x="247" y="306" width="159" height="33"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -116,7 +116,7 @@
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9MN-Er-91A">
-                                                <rect key="frame" x="8" y="352" width="398" height="17"/>
+                                                <rect key="frame" x="8" y="347" width="398" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="date" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-2m-I23">
                                                         <rect key="frame" x="0.0" y="0.0" width="29" height="17"/>
@@ -158,9 +158,11 @@
                                 <constraints>
                                     <constraint firstItem="GDv-wR-t1t" firstAttribute="top" secondItem="7J5-3Q-64v" secondAttribute="top" id="6dS-Gb-6Tb"/>
                                     <constraint firstItem="GDv-wR-t1t" firstAttribute="leading" secondItem="7J5-3Q-64v" secondAttribute="leading" id="C4G-Aq-XGW"/>
+                                    <constraint firstItem="GDv-wR-t1t" firstAttribute="height" secondItem="7J5-3Q-64v" secondAttribute="height" id="IJR-92-Pil"/>
                                     <constraint firstAttribute="trailing" secondItem="GDv-wR-t1t" secondAttribute="trailing" id="Is8-bx-gzU"/>
                                     <constraint firstAttribute="bottom" secondItem="GDv-wR-t1t" secondAttribute="bottom" id="Ske-VH-HKc"/>
                                     <constraint firstItem="ng7-Ho-4SQ" firstAttribute="bottom" secondItem="GDv-wR-t1t" secondAttribute="bottom" id="h5R-zr-3Fh"/>
+                                    <constraint firstItem="GDv-wR-t1t" firstAttribute="width" secondItem="7J5-3Q-64v" secondAttribute="width" id="noZ-tG-pYT"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="ZiE-tc-ICu"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ng7-Ho-4SQ"/>
@@ -200,7 +202,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AfI-bP-ohG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zt7-mh-78a">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
