@@ -33,11 +33,10 @@ class NewsFeedTableViewController: UITableViewController {
   private var notificationToken: NotificationToken?
   
   override func viewDidLoad() {
-    setUpRefreshControl()
-    viewModel = NewsFeedPresenter()
-    
     NotificationCenter.default.addObserver(self, selector: #selector(requestError), name: NotificationEndpoints.requestError, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(fetchArtciles), name: NotificationEndpoints.articleDataFetched, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(fetchArtcilesFromDatabase), name: NotificationEndpoints.articleDataFetched, object: nil)
+    viewModel = NewsFeedPresenter()
+    setUpRefreshControl()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -45,32 +44,42 @@ class NewsFeedTableViewController: UITableViewController {
   }
   
   private func setUpRefreshControl() {
-    tableView.refreshControl = tableRefreshControl
-  }
+    DispatchQueue.main.async {
+      self.tableView.refreshControl = self.tableRefreshControl
+
+    }
+}
   
   
-  @objc private func fetchArtciles() {
+  @objc private func fetchArtcilesFromDatabase() {
     DispatchQueue.main.async { [weak self] in
       self?.articles = self?.viewModel?.fetchArticlesFromDatabase()
     }
   }
   
   @objc private func refreshTableData(_ sender: UIRefreshControl) {
-    fetchArtciles()
-    sender.endRefreshing()
+    sender.beginRefreshing()
+    fetchArtcilesFromDatabase()
   }
   
   @objc private func requestError() {
-    let alert = UIAlertController(title: "Request Error", message: "Please, check your internet connection or try again later.", preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-    
-    alert.addAction(okAction)
-    
-    self.present(alert, animated: true, completion: nil)
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: "Request Error", message: "Please, check your internet connection or try again later.", preferredStyle: .alert)
+      let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+        self?.fetchArtcilesFromDatabase()
+      }
+      alert.addAction(okAction)
+      
+      self.present(alert, animated: true, completion: nil)
+    }
   }
 }
 
 extension NewsFeedTableViewController {
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let articles = articles else { return 0}
@@ -81,7 +90,7 @@ extension NewsFeedTableViewController {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.identifier) as? NewsFeedTableViewCell else { return UITableViewCell() }
     
     if let data = articles?[indexPath.row] {
-      cell.setUpCellData(from: data)
+        cell.setUpCellData(from: data)
     }
     
     return cell

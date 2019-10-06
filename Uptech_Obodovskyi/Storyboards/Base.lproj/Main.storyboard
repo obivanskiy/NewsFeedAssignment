@@ -31,7 +31,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-OO-Cv6">
-                                            <rect key="frame" x="95" y="6.9999999999999964" width="299" height="54.666666666666657"/>
+                                            <rect key="frame" x="95" y="6.9999999999999982" width="299" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                         <constraint firstItem="gLS-OO-Cv6" firstAttribute="top" secondItem="Tll-Ql-NrL" secondAttribute="top" constant="7" id="0kI-9b-3lT"/>
                                         <constraint firstAttribute="trailing" secondItem="gLS-OO-Cv6" secondAttribute="trailing" constant="20" id="3Iy-15-hMB"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cQL-3B-vU9" secondAttribute="trailing" constant="20" id="8hf-DM-zfm"/>
-                                        <constraint firstItem="cQL-3B-vU9" firstAttribute="top" secondItem="gLS-OO-Cv6" secondAttribute="bottom" constant="8" id="MUv-x8-LQF"/>
+                                        <constraint firstItem="cQL-3B-vU9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gLS-OO-Cv6" secondAttribute="bottom" constant="8" id="MUv-x8-LQF"/>
                                         <constraint firstItem="pIX-U1-uPY" firstAttribute="centerY" secondItem="Tll-Ql-NrL" secondAttribute="centerY" id="REU-ZZ-cYw"/>
                                         <constraint firstItem="pIX-U1-uPY" firstAttribute="leading" secondItem="Tll-Ql-NrL" secondAttribute="leading" constant="10" id="cem-tE-GFp"/>
                                         <constraint firstItem="cQL-3B-vU9" firstAttribute="leading" secondItem="pIX-U1-uPY" secondAttribute="trailing" constant="8" id="qx7-oX-aKa"/>
@@ -62,6 +62,7 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="kdm-kd-2JO" id="gx8-eS-Tq7"/>
                             <outlet property="delegate" destination="kdm-kd-2JO" id="0qL-bn-aX1"/>

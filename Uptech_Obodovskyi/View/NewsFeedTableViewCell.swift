@@ -20,8 +20,11 @@ class NewsFeedTableViewCell: UITableViewCell {
   }
   
   func setUpCellData(from object: ArticleObject) {
-    self.articleTitle.text = object.title
-    self.articleDescription.text = object.articleDescription
-    self.articleImage.fetchImage(with: object.urlToImage)
+    articleTitle.text = object.title
+    articleDescription.text = object.articleDescription
+    
+    DispatchQueue.main.async { [weak self] in
+      self?.articleImage.fetchImage(with: object.urlToImage)
+    }
   }
 }
