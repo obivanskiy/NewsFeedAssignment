@@ -50,16 +50,19 @@ class NewsFeedTableViewController: UITableViewController {
     }
 }
   
-  
   @objc private func fetchArtcilesFromDatabase() {
     DispatchQueue.main.async { [weak self] in
       self?.articles = self?.viewModel?.fetchArticlesFromDatabase()
     }
   }
   
+  private func sendArticlesRequest() {
+    viewModel?.performArticleRequest()
+  }
+  
   @objc private func refreshTableData(_ sender: UIRefreshControl) {
     sender.beginRefreshing()
-    fetchArtcilesFromDatabase()
+    sendArticlesRequest()
   }
   
   @objc private func requestError() {

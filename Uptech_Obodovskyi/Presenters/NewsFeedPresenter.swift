@@ -15,7 +15,7 @@ class NewsFeedPresenter {
     performArticleRequest()
   }
   
-  private func performArticleRequest() {
+  func performArticleRequest() {
       NetworkService.shared.performRequest(for: NetworkEndpoints.newsFeedUrl + NetworkEndpoints.apiKey)
   }
   

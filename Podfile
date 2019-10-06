@@ -8,7 +8,6 @@ target 'Uptech_Obodovskyi' do
   # Pods for Uptech_Obodovskyi
 
 pod 'RealmSwift'
-pod 'RxSwift'
 pod 'Kingfisher'
 
   target 'Uptech_ObodovskyiTests' do
